@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON DASH // ULTRA EDITION</title>
+    <!-- External Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <div id="app-wrapper">
+        <!-- Audio Activation Screen Overlay -->
+        <div id="start-overlay" class="overlay active">
+            <div class="overlay-card glass-panel">
+                <div class="logo-box">
+                    <i class="fa-solid fa-shapes logo-icon"></i>
+                    <h1>NEON DASH<span class="highlight">ULTRA</span></h1>
+                </div>
+                <p class="subtitle">SYNTHWAVE ARCADE ACTION WITH PROCEDURAL SOUNDTRACKS</p>
+                <div class="controls-hint">
+                    <div class="hint-item"><span class="key">SPACE</span> / <span class="key">CLICK</span> / <span class="key">UP</span> Jump / Orb Ring</div>
+                    <div class="hint-item"><span class="key">P</span> Pause Menu</div>
+                    <div class="hint-item"><span class="key">R</span> Quick Restart</div>
+                </div>
+                <button id="btn-start-game" class="btn btn-primary pulse-btn">
+                    <i class="fa-solid fa-play"></i> START GAME
+                </button>
+            </div>
+        </div>
+
+        <!-- Level Selector Overlay -->
+        <div id="level-overlay" class="overlay hidden">
+            <div class="overlay-card glass-panel level-select-card">
+                <h2>SELECT LEVEL</h2>
+                <div class="level-carousel" id="level-carousel">
+                    <!-- Cards dynamically populated via JS -->
+                </div>
+                <div class="carousel-nav">
+                    <button id="btn-prev-level" class="btn btn-icon"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="level-index-indicator">1 / 5</span>
+                    <button id="btn-next-level" class="btn btn-icon"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="action-row">
+                    <button id="btn-play-selected" class="btn btn-success btn-large">
+                        <i class="fa-solid fa-play"></i> PLAY LEVEL
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay" class="overlay hidden">
+            <div class="overlay-card glass-panel">
+                <h2>GAME PAUSED</h2>
+                <div class="pause-stats">
+                    <p>Current Progress: <span id="pause-progress">0%</span></p>
+                    <p>Attempts: <span id="pause-attempts">1</span></p>
+                </div>
+                <div class="pause-buttons">
+                    <button id="btn-resume" class="btn btn-primary"><i class="fa-solid fa-play"></i> RESUME</button>
+                    <button id="btn-restart" class="btn btn-warning"><i class="fa-solid fa-rotate-right"></i> RESTART</button>
+                    <button id="btn-exit" class="btn btn-danger"><i class="fa-solid fa-house"></i> LEVEL MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victory Modal -->
+        <div id="victory-overlay" class="overlay hidden">
+            <div class="overlay-card glass-panel text-center">
+                <i class="fa-solid fa-trophy victory-icon"></i>
+                <h2 class="glow-text">LEVEL COMPLETE!</h2>
+                <p id="victory-stats">100% Cleared in 1 Attempt!</p>
+                <div class="action-row">
+                    <button id="btn-victory-continue" class="btn btn-primary btn-large">
+                        <i class="fa-solid fa-forward"></i> NEXT LEVEL
+                    </button>
+                    <button id="btn-victory-menu" class="btn btn-secondary">
+                        <i class="fa-solid fa-list"></i> MENU
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Container -->
+        <div id="game-view">
+            <!-- Top HUD Bar -->
+            <header id="hud">
+                <div class="hud-left">
+                    <span id="hud-level-title">STEREO MADNESS</span>
+                    <span id="hud-attempts" class="badge">ATTEMPT 1</span>
+                </div>
+                <div class="hud-center">
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill"></div>
+                        <span id="progress-text">0%</span>
+                    </div>
+                </div>
+                <div class="hud-right">
+                    <button id="btn-audio-toggle" class="btn btn-icon-small" title="Toggle Audio">
+                        <i class="fa-solid fa-volume-high" id="audio-icon"></i>
+                    </button>
+                    <button id="btn-pause-game" class="btn btn-icon-small" title="Pause">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Game Canvas -->
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas" width="1280" height="720"></canvas>
+            </div>
+
+            <!-- Audio Equalizer / Visualizer Bar Footer -->
+            <footer id="audio-visualizer-bar">
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+                <div class="vis-bar"></div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="src/js/script.js"></script>
+</body>
+</html>
