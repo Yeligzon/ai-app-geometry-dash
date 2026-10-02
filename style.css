@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#game-container {
+    width:  800px;
+    height: 300px;
+    background: #16213e;
+    position: relative;
+    border-bottom: 5px solid #e94560;
+    overflow: hidden;
+}
+
+#player {
+    width: 40px;
+    height: 40px;
+    background: #0f3460;
+    border: 3px solid #e94560;
+    position: absolute;
+    left: 50px;
+    bottom: 0;
+    transition: transform 0.1s;
+    box-shadow: 0 0 15px #e94560;
+}
+
+.obstacle {
+    width: 30px;
+    height: 50px;
+    background: #e94560;
+    position: absolute;
+    bottom: 0;
+}
+
+#score { position: absolute; top: 10px; left: 10px; font-size: 20px; z-index: 10; }
+#instructions { position: absolute; bottom: 20px; color: #888; }
+</style>
