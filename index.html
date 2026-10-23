@@ -1,136 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEON DASH // ULTRA EDITION</title>
-    <!-- External Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Calculadora Industrial - Yeligzon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <div id="app-wrapper">
-        <!-- Audio Activation Screen Overlay -->
-        <div id="start-overlay" class="overlay active">
-            <div class="overlay-card glass-panel">
-                <div class="logo-box">
-                    <i class="fa-solid fa-shapes logo-icon"></i>
-                    <h1>NEON DASH<span class="highlight">ULTRA</span></h1>
-                </div>
-                <p class="subtitle">SYNTHWAVE ARCADE ACTION WITH PROCEDURAL SOUNDTRACKS</p>
-                <div class="controls-hint">
-                    <div class="hint-item"><span class="key">SPACE</span> / <span class="key">CLICK</span> / <span class="key">UP</span> Jump / Orb Ring</div>
-                    <div class="hint-item"><span class="key">P</span> Pause Menu</div>
-                    <div class="hint-item"><span class="key">R</span> Quick Restart</div>
-                </div>
-                <button id="btn-start-game" class="btn btn-primary pulse-btn">
-                    <i class="fa-solid fa-play"></i> START GAME
-                </button>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-badge">CALC-01</span>
+                <h1>Terminal de Precisión</h1>
             </div>
-        </div>
-
-        <!-- Level Selector Overlay -->
-        <div id="level-overlay" class="overlay hidden">
-            <div class="overlay-card glass-panel level-select-card">
-                <h2>SELECT LEVEL</h2>
-                <div class="level-carousel" id="level-carousel">
-                    <!-- Cards dynamically populated via JS -->
-                </div>
-                <div class="carousel-nav">
-                    <button id="btn-prev-level" class="btn btn-icon"><i class="fa-solid fa-chevron-left"></i></button>
-                    <span id="level-index-indicator">1 / 5</span>
-                    <button id="btn-next-level" class="btn btn-icon"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div class="action-row">
-                    <button id="btn-play-selected" class="btn btn-success btn-large">
-                        <i class="fa-solid fa-play"></i> PLAY LEVEL
-                    </button>
-                </div>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="standard">Estándar</button>
+                <button class="mode-btn" data-mode="scientific">Científica</button>
+                <button class="mode-btn" data-mode="history">Historial</button>
             </div>
-        </div>
+        </header>
 
-        <!-- Pause Overlay -->
-        <div id="pause-overlay" class="overlay hidden">
-            <div class="overlay-card glass-panel">
-                <h2>GAME PAUSED</h2>
-                <div class="pause-stats">
-                    <p>Current Progress: <span id="pause-progress">0%</span></p>
-                    <p>Attempts: <span id="pause-attempts">1</span></p>
-                </div>
-                <div class="pause-buttons">
-                    <button id="btn-resume" class="btn btn-primary"><i class="fa-solid fa-play"></i> RESUME</button>
-                    <button id="btn-restart" class="btn btn-warning"><i class="fa-solid fa-rotate-right"></i> RESTART</button>
-                    <button id="btn-exit" class="btn btn-danger"><i class="fa-solid fa-house"></i> LEVEL MENU</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Victory Modal -->
-        <div id="victory-overlay" class="overlay hidden">
-            <div class="overlay-card glass-panel text-center">
-                <i class="fa-solid fa-trophy victory-icon"></i>
-                <h2 class="glow-text">LEVEL COMPLETE!</h2>
-                <p id="victory-stats">100% Cleared in 1 Attempt!</p>
-                <div class="action-row">
-                    <button id="btn-victory-continue" class="btn btn-primary btn-large">
-                        <i class="fa-solid fa-forward"></i> NEXT LEVEL
-                    </button>
-                    <button id="btn-victory-menu" class="btn btn-secondary">
-                        <i class="fa-solid fa-list"></i> MENU
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Game Container -->
-        <div id="game-view">
-            <!-- Top HUD Bar -->
-            <header id="hud">
-                <div class="hud-left">
-                    <span id="hud-level-title">STEREO MADNESS</span>
-                    <span id="hud-attempts" class="badge">ATTEMPT 1</span>
-                </div>
-                <div class="hud-center">
-                    <div class="progress-bar-container">
-                        <div id="progress-bar-fill"></div>
-                        <span id="progress-text">0%</span>
-                    </div>
-                </div>
-                <div class="hud-right">
-                    <button id="btn-audio-toggle" class="btn btn-icon-small" title="Toggle Audio">
-                        <i class="fa-solid fa-volume-high" id="audio-icon"></i>
-                    </button>
-                    <button id="btn-pause-game" class="btn btn-icon-small" title="Pause">
-                        <i class="fa-solid fa-pause"></i>
-                    </button>
-                </div>
-            </header>
-
-            <!-- Game Canvas -->
-            <div class="canvas-wrapper">
-                <canvas id="gameCanvas" width="1280" height="720"></canvas>
+        <main class="calculator-card">
+            <!-- Pantalla -->
+            <div class="display-screen">
+                <div class="history-expression" id="historyExpression"></div>
+                <div class="main-display" id="mainDisplay">0</div>
             </div>
 
-            <!-- Audio Equalizer / Visualizer Bar Footer -->
-            <footer id="audio-visualizer-bar">
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-                <div class="vis-bar"></div>
-            </footer>
-        </div>
+            <!-- Panel Científico / Extendido -->
+            <div class="keypad-grid scientific-panel hidden" id="scientificPanel">
+                <button class="btn fn" data-action="sin">sin</button>
+                <button class="btn fn" data-action="cos">cos</button>
+                <button class="btn fn" data-action="tan">tan</button>
+                <button class="btn fn" data-action="sqrt">√</button>
+                <button class="btn fn" data-action="pow">x²</button>
+                <button class="btn fn" data-action="log">log</button>
+                <button class="btn fn" data-action="ln">ln</button>
+                <button class="btn fn" data-action="pi">π</button>
+                <button class="btn fn" data-action="e">e</button>
+                <button class="btn fn" data-action="fact">n!</button>
+            </div>
+
+            <!-- Panel Principal -->
+            <div class="keypad-grid main-panel">
+                <button class="btn action" data-action="clear">AC</button>
+                <button class="btn action" data-action="delete">⌫</button>
+                <button class="btn op" data-action="percent">%</button>
+                <button class="btn op" data-action="divide">÷</button>
+
+                <button class="btn num" data-num="7">7</button>
+                <button class="btn num" data-num="8">8</button>
+                <button class="btn num" data-num="9">9</button>
+                <button class="btn op" data-action="multiply">×</button>
+
+                <button class="btn num" data-num="4">4</button>
+                <button class="btn num" data-num="5">5</button>
+                <button class="btn num" data-num="6">6</button>
+                <button class="btn op" data-action="subtract">-</button>
+
+                <button class="btn num" data-num="1">1</button>
+                <button class="btn num" data-num="2">2</button>
+                <button class="btn num" data-num="3">3</button>
+                <button class="btn op" data-action="add">+</button>
+
+                <button class="btn num span-2" data-num="0">0</button>
+                <button class="btn num" data-num=".">.</button>
+                <button class="btn equals" data-action="equals">=</button>
+            </div>
+
+            <!-- Panel de Historial -->
+            <div class="history-panel hidden" id="historyPanel">
+                <div class="history-header">
+                    <h3>Registro de Operaciones</h3>
+                    <button class="btn-clear-history" id="clearHistoryBtn">Limpiar Historial</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div class="history-empty">No hay operaciones registradas</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>YZG Engineering Studio &bull; Estilo: Terminal Industrial</p>
+        </footer>
     </div>
 
-    <!-- Main JavaScript Logic -->
     <script src="src/js/script.js"></script>
 </body>
 </html>
