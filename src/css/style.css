@@ -1,38 +1,40 @@
 /* 
-  Identidad Visual: "Terminal de Ingeniería de Precisión"
+  Identidad Visual: "Titanio Minimalista"
   Paleta: 
-    - Fondo principal: #111315 (Graphite Dark)
-    - Contenedor calculadora: #1B1E22 (Steel Surface)
-    - Acento principal: #E85D26 (Industrial Safety Orange)
-    - Texto principal: #F4F5F6 (Alloy White)
-    - Texto secundario / bordes: #3D444D (Steel Border)
-    - Botón numérico: #242930 (Dark Slate)
-    - Botón operador: #2D333D (Lighter Slate)
-  Tipografía: Plus Jakarta Sans + JetBrains Mono (para pantalla)
+    - Fondo principal: #0A0A0C (Deep Obsidian)
+    - Contenedor calculadora: #141417 (Titanium Surface)
+    - Acento principal: #FF9F0A (Warm Amber / Apple inspired)
+    - Texto principal: #F5F5F7 (Pure Silver)
+    - Texto secundario: #86868B (Muted Titanium)
+    - Bordes sutiles: #26262A
+    - Botón numérico: #1C1C21 (Alloy Dark)
+    - Botón operador: #2C2C32
+    - Botón acción: #2E1D19
+  Tipografía: Inter + SF Mono
 */
 
 :root {
-  --bg-main: #111315;
-  --bg-surface: #1B1E22;
-  --accent: #E85D26;
-  --accent-hover: #D04F1B;
-  --text-main: #F4F5F6;
-  --text-muted: #8C959F;
-  --border-color: #3D444D;
-  --btn-num: #242930;
-  --btn-num-hover: #2E3540;
-  --btn-op: #2D333D;
-  --btn-op-hover: #38404E;
-  --btn-action: #3A231C;
-  --btn-action-hover: #4D2D24;
-  --radius: 8px;
+  --bg-main: #0A0A0C;
+  --bg-surface: #141417;
+  --accent: #FF9F0A;
+  --accent-hover: #E88E00;
+  --text-main: #F5F5F7;
+  --text-muted: #86868B;
+  --border-color: #26262A;
+  --btn-num: #1C1C21;
+  --btn-num-hover: #2A2A30;
+  --btn-op: #2C2C32;
+  --btn-op-hover: #3A3A42;
+  --btn-action: #2E1E1B;
+  --btn-action-hover: #3E2622;
+  --radius: 12px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -42,53 +44,51 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 24px;
 }
 
 .app-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .app-header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.brand-badge {
+.brand-dot {
+  width: 8px;
+  height: 8px;
   background-color: var(--accent);
-  color: #fff;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 159, 10, 0.4);
 }
 
 .app-header h1 {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--text-main);
 }
 
 .mode-selector {
   display: flex;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius);
+  border-radius: 10px;
   padding: 3px;
-  gap: 3px;
+  gap: 2px;
 }
 
 .mode-btn {
@@ -96,12 +96,12 @@ body {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   padding: 6px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mode-btn:hover {
@@ -109,60 +109,62 @@ body {
 }
 
 .mode-btn.active {
-  background-color: var(--border-color);
+  background-color: #222228;
   color: var(--text-main);
+  font-weight: 600;
 }
 
 .calculator-card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .display-screen {
-  background-color: #0D0F11;
+  background-color: #0E0E10;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px;
   text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 90px;
+  min-height: 96px;
 }
 
 .history-expression {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
   color: var(--text-muted);
   min-height: 18px;
   word-break: break-all;
 }
 
 .main-display {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 32px;
-  font-weight: 700;
+  font-family: 'SF Mono', monospace;
+  font-size: 34px;
+  font-weight: 400;
   color: var(--text-main);
   word-break: break-all;
   margin-top: 4px;
+  letter-spacing: -0.5px;
 }
 
 .keypad-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
 .scientific-panel {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
+  padding-bottom: 14px;
 }
 
 .scientific-panel.hidden,
@@ -173,14 +175,14 @@ body {
 .btn {
   background-color: var(--btn-num);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius);
+  border-radius: 12px;
   color: var(--text-main);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 16px;
-  font-weight: 600;
-  height: 50px;
+  font-family: 'SF Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  height: 48px;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  transition: background-color 0.15s ease, transform 0.08s ease, border-color 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,14 +191,16 @@ body {
 
 .btn:hover {
   background-color: var(--btn-num-hover);
+  border-color: #33333A;
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 
 .btn.op {
   background-color: var(--btn-op);
+  color: var(--accent);
 }
 
 .btn.op:hover {
@@ -205,28 +209,30 @@ body {
 
 .btn.action {
   background-color: var(--btn-action);
-  color: var(--accent);
+  color: #FF453A;
 }
 
 .btn.action:hover {
-  background-color: var(--btn-action-hover);
+  background-color: #3E2522;
 }
 
 .btn.fn {
-  background-color: #1E232B;
-  font-size: 13px;
+  background-color: #18181C;
+  font-size: 12px;
   color: var(--text-muted);
+  border-color: #222226;
 }
 
 .btn.fn:hover {
-  background-color: #28303B;
+  background-color: #222228;
   color: var(--text-main);
 }
 
 .btn.equals {
   background-color: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #0A0A0C;
+  font-weight: 600;
 }
 
 .btn.equals:hover {
@@ -241,8 +247,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 270px;
-  max-height: 270px;
+  min-height: 260px;
+  max-height: 260px;
 }
 
 .history-header {
@@ -252,11 +258,10 @@ body {
 }
 
 .history-header h3 {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
 }
 
 .btn-clear-history {
@@ -264,7 +269,7 @@ body {
   border: none;
   color: var(--accent);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -277,36 +282,37 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   padding-right: 4px;
 }
 
 .history-item {
-  background-color: #121518;
+  background-color: #101013;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .history-item:hover {
   border-color: var(--accent);
+  background-color: #16161A;
 }
 
 .history-item-expr {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'SF Mono', monospace;
   font-size: 11px;
   color: var(--text-muted);
 }
 
 .history-item-res {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  font-weight: 700;
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-main);
   text-align: right;
 }
@@ -314,12 +320,6 @@ body {
 .history-empty {
   text-align: center;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 12px;
   margin: auto 0;
-}
-
-.app-footer {
-  text-align: center;
-  font-size: 11px;
-  color: var(--text-muted);
 }
